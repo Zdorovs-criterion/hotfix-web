@@ -26,6 +26,17 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
     return accounting.formatNumber(result, 0, ' ');
   }, [ order, item ]);
 
+   //HACKATHON EDIT
+    let makeOrder = null;
+    if (+price !== 0) {
+        makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
+            Оформить заказ ({price})
+        </Link>;
+    } else {
+        makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order nonactive">
+                Оформить заказ ({price})
+             </Link>;
+    }
   return (
     <div className="Place">
       <header className="Place__header">
@@ -100,10 +111,8 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
           </li>
         )))}
       </ul>
-      <footer className="Place__footer">
-        <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
-          Оформить заказ ({price})
-        </Link>
+          <footer className="Place__footer">
+              {makeOrder}
       </footer>
     </div>
   );

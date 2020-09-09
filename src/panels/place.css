@@ -165,6 +165,12 @@
   color: #fff;
 }
 
+.nonactive {
+  opacity: 0.8;
+  cursor: default;
+  pointer-events: none;
+}
+
 .Place__products-wrapper {
   position: relative;
 }

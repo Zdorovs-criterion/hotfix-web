@@ -34,6 +34,16 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
     return [ accounting.formatNumber(result, 0, ' '), products ];
   }, [ order, item ]);
 
+  let makeOrder = null
+  if (+price !== 0) {
+    makeOrder = <Link to={`/order/${area.id}/${item.id}`} className="Place__order">
+      Оплатить {price}
+    </Link>
+  } else {
+    makeOrder = <Link to={`/order/${area.id}/${item.id}`} className="Place__order nonactive">
+      Оплатить {price}
+    </Link>
+  }
   return (
     <div className="Place">
       <header className="Place__header">
@@ -147,9 +157,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
         </div>
       </div>
       <footer className="Place__footer">
-        <Link to={`/order/${area.id}/${item.id}`} className="Place__order">
-          Оплатить {price}
-        </Link>
+        {makeOrder}
       </footer>
     </div>
   );
