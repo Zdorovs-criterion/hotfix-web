@@ -34,15 +34,17 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
     return [ accounting.formatNumber(result, 0, ' '), products ];
   }, [ order, item ]);
 
+    //HACKATHON EDIT
   let makeOrder = null
   if (+price !== 0) {
     makeOrder = <Link to={`/order/${area.id}/${item.id}`} className="Place__order">
       Оплатить {price}
     </Link>
   } else {
-    makeOrder = <Link to={`/order/${area.id}/${item.id}`} className="Place__order nonactive">
+    makeOrder = <div className="Place__order nonactive">
       Оплатить {price}
-    </Link>
+    </div>
+      //HACKATHON EDIT
   }
   return (
     <div className="Place">

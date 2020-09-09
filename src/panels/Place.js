@@ -29,9 +29,10 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
    //HACKATHON EDIT
     let makeOrder = null;
     if (+price !== 0) {
-        makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
+        makeOrder = <div className="Place__order">
             Оформить заказ ({price})
-        </Link>;
+        </div>;
+        //HACKATHON EDIT
     } else {
         makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order nonactive">
                 Оформить заказ ({price})
