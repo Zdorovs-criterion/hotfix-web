@@ -117,6 +117,12 @@ const Basket = ({match: {params: {areaId, itemId}}, foodAreas, order}) => {
                 <Link
                     className="Place__change-product"
                     to={`/place/${areaId}/${itemId}`}
+                    onClick={() => {
+                        localStorage.setItem('selfService', JSON.stringify(selfService))
+                        localStorage.setItem('faster', JSON.stringify(faster));
+                        localStorage.setItem('time', JSON.stringify(time));
+                        localStorage.setItem('timeValid', JSON.stringify(timeValid));
+                    }}
                 >
                     Изменить
                 </Link>
@@ -136,9 +142,6 @@ const Basket = ({match: {params: {areaId, itemId}}, foodAreas, order}) => {
                                 setFaster(true);
                                 setTimeValid(true)
                             }
-                            localStorage.setItem('faster', JSON.stringify(faster));
-                            localStorage.setItem('time', JSON.stringify(time));
-                            localStorage.setItem('timeValid', JSON.stringify(timeValid));
                         }}
                     />
                 </div>
@@ -149,13 +152,10 @@ const Basket = ({match: {params: {areaId, itemId}}, foodAreas, order}) => {
                         value={time}
                         onFocus={() => {
                             setFaster(false);
-                            localStorage.setItem('faster', JSON.stringify(faster));
                         }}
                         onChange={event => {
                             setFaster(false);
                             setTime(event.target.value);
-                            localStorage.setItem('faster', JSON.stringify(faster));
-                            localStorage.setItem('time', JSON.stringify(time));
                         }}
                         onBlur={() => {
                             if (time) {
@@ -168,9 +168,6 @@ const Basket = ({match: {params: {areaId, itemId}}, foodAreas, order}) => {
                                 } else {
                                     setTimeValid(false)
                                 }
-                                localStorage.setItem('faster', JSON.stringify(faster));
-                                localStorage.setItem('time', JSON.stringify(time));
-                                localStorage.setItem('timeValid', JSON.stringify(timeValid));
                             }
                         }}
                     />
@@ -180,17 +177,12 @@ const Basket = ({match: {params: {areaId, itemId}}, foodAreas, order}) => {
                     <h3>С собой</h3>
                     <Checkbox checked={selfService} onToggle={() => {
                         setSelfService(!selfService);
-                        localStorage.setItem('selfService', JSON.stringify(selfService));
-                        console.log(localStorage)
-
                     }}/>
                 </div>
                 <div className="Place__choice-item">
                     <h3>На месте</h3>
                     <Checkbox checked={!selfService} onToggle={() => {
                         setSelfService(!selfService);
-                        localStorage.setItem('selfService', JSON.stringify(selfService));
-                        console.log(localStorage)
                     }}/>
                 </div>
             </div>
