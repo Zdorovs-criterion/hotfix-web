@@ -10,8 +10,7 @@ import './place.css';
 
 const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
   const [ faster, setFaster ] = useState(true);
-  const [timeAlertVisibility, setTimeAlertVisibility] = useState();
-  const [buyActive, setBuyActive] = useState();
+  const [timeValid, setTimeValid] = useState(true);
   const [ time, setTime ] = useState('');
   const [ selfService, setSelfService ] = useState(false);
   const area = foodAreas.filter(area => area.id === areaId)[0];
@@ -38,7 +37,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
 
     //HACKATHON EDIT
   let makeOrder = null
-  if (+price !== 0) {
+  if (+price !== 0 && timeValid) {
     makeOrder = <Link to={`/order/${area.id}/${item.id}`} className="Place__order">
       Оплатить {price}
     </Link>
@@ -48,6 +47,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
     </div>
       //HACKATHON EDIT
   }
+  let error = <span>Ошибка</span>
   return (
     <div className="Place">
       <header className="Place__header">
@@ -152,13 +152,16 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
                 let hour = parseInt(timeVal[0], 10);
                 let min = parseInt(timeVal[1], 10);
                 if (hour && min && hour <= 24 && hour >= 0 && min <=  59 && min >= 0) {
+                  setTimeValid(true)
                   console.log(`success: ${hour}:${min}`);
                 } else {
+                  setTimeValid(false)
                   console.log('error');
                 }
               }
             }}
           />
+          {!timeValid && error}
         </div>
         <div className="Place__choice-item">
           <h3>С собой</h3>
