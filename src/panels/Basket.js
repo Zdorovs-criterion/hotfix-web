@@ -47,7 +47,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
     </div>
       //HACKATHON EDIT
   }
-  let error = <span>Ошибка</span>
+  let error = <span className="errorSpan">Время должно быть в формате "час:время" </span>
   return (
     <div className="Place">
       <header className="Place__header">

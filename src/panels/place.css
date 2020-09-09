@@ -252,10 +252,17 @@
   margin-bottom: 10px;
 }
 
+
 .Place__choice span {
   padding-right: 10px;
   font-size: 24px;
   color: #868686;
+}
+
+/* hackaton edit */
+.errorSpan {
+  border-bottom: 2px dotted red;
+  margin-left: 10px;
 }
 
 .Place__choice input {
