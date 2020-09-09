@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=10888 react-scripts start",
+    "start": "cross-env PORT=11888 react-scripts start",
     "build": "react-scripts build",
     "surge-deploy": "npm run build && surge ./build --domain kozodoi-club-hack.surge.sh"
   },

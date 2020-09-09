@@ -10,6 +10,8 @@ import './place.css';
 
 const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
   const [ faster, setFaster ] = useState(true);
+  const [timeAlertVisibility, setTimeAlertVisibility] = useState();
+  const [buyActive, setBuyActive] = useState();
   const [ time, setTime ] = useState('');
   const [ selfService, setSelfService ] = useState(false);
   const area = foodAreas.filter(area => area.id === areaId)[0];
@@ -134,6 +136,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
         <div className="Place__choice-item">
           <span>Назначить</span>
           <input
+              placeholder="hh:mm"
             value={time}
             onFocus={() => {
               setFaster(false);
@@ -145,6 +148,14 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
             onBlur={() => {
               if (time) {
                 setFaster(false);
+                let timeVal = time.split(':');
+                let hour = parseInt(timeVal[0], 10);
+                let min = parseInt(timeVal[1], 10);
+                if (hour && min && hour <= 24 && hour >= 0 && min <=  59 && min >= 0) {
+                  console.log(`success: ${hour}:${min}`);
+                } else {
+                  console.log('error');
+                }
               }
             }}
           />
