@@ -151,7 +151,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
                 let timeVal = time.split(':');
                 let hour = parseInt(timeVal[0], 10);
                 let min = parseInt(timeVal[1], 10);
-                if (hour && min && hour <= 24 && hour >= 0 && min <=  59 && min >= 0) {
+                if (hour < 24 && hour >= 0 && min <=  59 && min >= 0) {
                   setTimeValid(true)
                   console.log(`success: ${hour}:${min}`);
                 } else {
