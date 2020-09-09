@@ -29,15 +29,16 @@ const Place = ({ item, order, onIncrementPosition, onDecrementPosition, area }) 
    //HACKATHON EDIT
     let makeOrder = null;
     if (+price !== 0) {
-        makeOrder = <div className="Place__order">
+        makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order">
             Оформить заказ ({price})
-        </div>;
-        //HACKATHON EDIT
+        </Link>;
+
     } else {
-        makeOrder = <Link to={`/basket/${area.id}/${item.id}`} className="Place__order nonactive">
+        makeOrder = <div  className="Place__order nonactive">
                 Оформить заказ ({price})
-             </Link>;
+             </div>;
     }
+    //HACKATHON EDIT
   return (
     <div className="Place">
       <header className="Place__header">

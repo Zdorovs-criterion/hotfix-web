@@ -167,7 +167,6 @@
 
 .nonactive {
   opacity: 0.8;
-  cursor: default;
   pointer-events: none;
 }
 
